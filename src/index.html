@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podlet Web</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 10px 10px;
+        }
+        h1, h2 {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        * {
+            margin: auto;
+        }
+        textarea {
+            overflow: auto;
+        }
+        .column:has(#in) {
+            background-color: #1763ed;
+        }
+        .column:has(#out) {
+            background-color: #892ca0;
+        }
+        .column, .minicolumn {
+            margin: 0;
+        }
+        #converter {
+            height: 100%;
+            width: 100%;
+            min-width: 3rem;
+            min-height: 3rem;
+        }
+        #copyright-notice {
+            width: 100%;
+            color: gray;
+            font-size: 10px;
+        }
+
+        @media (max-aspect-ratio: 1) { /* half over-under */
+            .text-hsbs { display: none; }
+            textarea {
+                width: 100%;
+                min-height: 300px;
+                resize: vertical;
+            }
+        }
+        @media (min-aspect-ratio: 1) { /* half side-by-side */
+            .text-hou { display: none; }
+            body {
+                margin: 0px 2rem;
+            }
+            textarea {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                resize: none;
+            }
+            .column, #converter, textarea {
+                min-height: 600px;
+            }
+            .row {
+                display: flex;
+            }
+            /* Code below was copied from: https://www.w3schools.com/howto/howto_css_two_columns.asp */
+
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Create two equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 47.5%;
+                padding: 10px;
+                height: 100%;
+            }
+            .minicolumn {
+                float: left;
+                width: 5%;
+                height: 100%;
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="https://github.com/mira-x/podlet-web">Podlet</a>: Convert docker-compose to podman quadlets</h1>
+    <div class="row">
+        <div class="column">
+            <textarea id="in"></textarea>
+            <h2>docker-compose</h2>
+        </div>
+        <div class="minicolumn">
+            <button id="converter"><span class="text-hsbs">-&gt;</span><span class="text-hou">V</span></button>
+        </div>
+        <div class="column">
+            <textarea id="out"></textarea>
+            <h2>quadlet</h2>
+        </div>        
+    </div>
+
+    <p id="copyright-notice">Podlet is free software and licensed under the terms of the Mozilla Public License 2.0</p>
+</body>
+</html>

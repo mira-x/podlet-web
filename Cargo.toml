@@ -65,6 +65,7 @@ indexmap = { version = "2", features = ["serde"] }
 ipnet = { version = "2.7", features = ["serde"] }
 k8s-openapi = { version = "0.27.0", features = ["latest"] }
 path-clean = "1"
+rocket = "0.5.1"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 serde_yaml = "0.9.21"
