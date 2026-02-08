@@ -241,7 +241,7 @@ fn read_from_stdin(options: &Options) -> color_eyre::Result<compose_spec::Compos
 ///
 /// Returns an error if a [`Service`], [`Network`], or [`Volume`](compose_spec::Volume) could not be
 /// converted into a [`quadlet::File`].
-fn parts_try_into_files(
+pub fn parts_try_into_files(
     services: IndexMap<Identifier, Service>,
     networks: Networks,
     volumes: Volumes,

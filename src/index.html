@@ -110,5 +110,26 @@
     </div>
 
     <p id="copyright-notice">Podlet is free software and licensed under the terms of the Mozilla Public License 2.0</p>
+
+    <script>
+        document.getElementById("converter").onclick = async () => {
+            var composeYaml = document.getElementById("in").value;
+            
+            var response = await fetch("/convert", {
+                method: "POST",
+                body: composeYaml
+            });
+
+            if(!response.ok) {
+                console.log("Error:")
+                console.log(response);
+                alert("An error occured.");
+                return;
+            }
+
+            var quadlet = await response.text();
+            document.getElementById("out").value = quadlet;
+        };
+    </script>
 </body>
 </html>

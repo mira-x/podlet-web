@@ -1,5 +1,5 @@
 mod build;
-mod compose;
+pub mod compose;
 mod container;
 mod generate;
 mod global_args;
@@ -617,7 +617,7 @@ impl PodmanCommands {
 
 #[derive(Debug)]
 #[allow(clippy::large_enum_variant)] // false positive, [Pod] is not zero-sized
-enum File {
+pub enum File {
     Quadlet(quadlet::File),
     Kubernetes(k8s::File),
 }
@@ -635,14 +635,14 @@ impl From<k8s::File> for File {
 }
 
 impl File {
-    fn name(&self) -> &str {
+    pub fn name(&self) -> &str {
         match self {
             Self::Quadlet(file) => &file.name,
             Self::Kubernetes(file) => &file.name,
         }
     }
 
-    fn extension(&self) -> &str {
+    pub fn extension(&self) -> &str {
         match self {
             Self::Quadlet(file) => file.resource.extension(),
             Self::Kubernetes(_) => "yaml",
@@ -682,7 +682,7 @@ impl File {
     ///
     /// Returns an error if the contained [`quadlet::File`] or [`k8s::File`] returns an error while
     /// serializing.
-    fn serialize(&self, join_options: &HashSet<JoinOption>) -> color_eyre::Result<String> {
+    pub fn serialize(&self, join_options: &HashSet<JoinOption>) -> color_eyre::Result<String> {
         match self {
             File::Quadlet(file) => file
                 .serialize_to_quadlet(join_options)
