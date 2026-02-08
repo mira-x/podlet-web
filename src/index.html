@@ -132,7 +132,7 @@
         document.getElementById("converter").onclick = async () => {
             var composeYaml = document.getElementById("in").value;
             
-            var response = await fetch("/convert", {
+            var response = await fetch("convert", {
                 method: "POST",
                 body: composeYaml
             });
