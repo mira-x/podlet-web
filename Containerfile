@@ -31,8 +31,11 @@ RUN cargo build \
 RUN cp target/$(cat /rust_target.txt)/dist/podlet .
 
 FROM scratch
-LABEL org.opencontainers.image.source="https://github.com/containers/podlet"
-LABEL org.opencontainers.image.description="Generate Podman Quadlet files from a Podman command, compose file, or existing object"
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=80
+EXPOSE 80
+LABEL org.opencontainers.image.source="https://github.com/mira-x/podlet-web"
+LABEL org.opencontainers.image.description="Generate Podman Quadlet files from docker-compose files on the web"
 LABEL org.opencontainers.image.licenses="MPL-2.0"
 COPY --from=builder /app/podlet /usr/local/bin/
 ENTRYPOINT [ "/usr/local/bin/podlet" ]
