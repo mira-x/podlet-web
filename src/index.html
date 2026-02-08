@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/webp" href="data:image/webp;base64,UklGRhIEAABXRUJQVlA4WAoAAAAQAAAALwAALwAAQUxQSIQBAAABkCvbtmlb69q2bdu29ZjZtp3Z9ots27Zt29yYD5vjCyJiAphqc7fs8TsffOO/3Ng4JNnZhOlt12LpXYHkf16aWWqui0HxoQ8iKRderQvXwW7IV9LyY1tLjQzSdoqk7dfFftqEX+JJa/5YkBbBD0lHcbOnuuhTpKuwylaN5XJOH+LnGKqo+U16f6oxUOT/iHQX97opMVhAgL86KEl8hEAPLOSMRv6CoH5ydvtEjGvWMgGfCPNDvkxHAuUGGUitRhFX2Eg9QaGTXhKOAszLMIk4guVTJQpxqE6iEqi9RA1Qb7ihcOMlaoEmSdQBzZFoAlou0RpovUQboL0SPYDOSQwDeiQxGei7wX8rgciNMWZwHCmTMeZyA6kTY6zoJdJSxgzHcki3bZjdXkL+VMb830MJU80bRCi67DuBsIWqnWC0+AbazXdo39edffxVgPn96twaR+/gmJzGLsMnL1y94/C5a/efvf347ScniKLA/fr26e3zhzcvHN+7YcWs8f3bVCSH+dgDVlA4IGgCAAAwDACdASowADAAPpFCm0slo6Iho4sAsBIJZQCuKBUPJJo/lSmOBXHarZtQ+nPYH6VHoq/qqsL8TTNwB9MiYcFgnsM47HcD4RzhxB33/tj5GjqcZdKe5gVut4+Yq35IqP+tdly6QojCRSAAAP736G693o1y9vzoLnr16sGFfmeuWDpbQPkRwPBgYSmBnXTXsJpx8CbREU9lR35Zs7gzjHLHJhmTdJ0zUHZOuDwNrXwfSaS4gDImqzhPuIUZmbGGdX/mrWrW+qnsCP20ySpmtymxU73kB0qHlvtMcbFrzIInedNHTYI4mDlsoCRGuc+tZAL8iznvUb7gFI9K6pU/i9ou4dGdNsAU0NVW/jizJn/XGC79Z9zdAZQKRr2g5Mh48Ktl1InEekbL8qQhUemYQqBMudYTMi9wLIu5yCR1BP+qVY/7qgcXvTRIKjGc9CVWXB4cpm0ZTd3E2m7evDE7SUNL/fJU+XdKlGRwtcgNx/l4DnRjaVZdwyagAfHMoRI/wnwpkaA0dvtMeCG++n+O2m+L4bwprotMZlo1nB4rbwH1Gbd8KJkthE8p4vssEjv7b3fUQ30Y/c3DBLiZZBAsZEfRH5d465lp6e8Em7ufKXol/CpjBlXsO3n7Uk+lvjUy0kfcUpe4sVB8LI1lyI3ztNVYoLBCQufVWEM9mnAnGVrNkexidq2fbQ+OcPLCBOVM2+lS6dPXyipMFZe7OUt/ncnuRLGq9P9bOi+ki+NNAelEUFJhcezkSyJl1rNrf4H9zjZ9+ZcBGv8NpWmhY6OS3ccWdqESmgf+cZHr24aHZNWRRRmelx8agAAA">
-    <title>Podlet Web</title>
+
+    <title>Podlet Web - Convert Docker Compose to Podman Quadlets Online</title>
+    <meta name="description" content="Free online tool to convert Docker Compose YAML files to Podman Quadlet format. Simple, fast, private and open source converter for container orchestration.">
+    <meta name="keywords" content="podman, docker compose, quadlet, container, converter, docker to podman, systemd">
+
+    <meta property="og:title" content="Podlet Web - Docker Compose to Podman Quadlet Converter">
+    <meta property="og:description" content="Convert Docker Compose files to Podman Quadlet format instantly with this free online tool.">
+    <meta property="og:type" content="website">
     <style>
         body {
             font-family: monospace;
@@ -13,6 +20,9 @@
         h1, h2 {
             text-align: center;
             padding: 1rem 0;
+        }
+        h2 {
+            color: white;
         }
         * {
             margin: auto;
@@ -95,7 +105,10 @@
     </style>
 </head>
 <body>
-    <h1><a href="https://github.com/mira-x/podlet-web">Podlet</a>: Convert docker-compose to podman quadlets</h1>
+    <header>
+        <h1>Podlet: Convert docker-compose.yml to Podman quadlets</h1>
+    </header>
+    <main>
     <div class="row">
         <div class="column">
             <textarea id="in"></textarea>
@@ -109,8 +122,11 @@
             <h2>quadlet</h2>
         </div>        
     </div>
+    </main>
 
-    <p id="copyright-notice"><a href="https://github.com/mira-x/podlet-web">Podlet</a> is free software and licensed under the terms of the Mozilla Public License 2.0. The <a href="https://github.com/containers/podman.io">Podman icon</a> is licensed under the Apache 2.0 License.</p>
+    <footer>
+        <p id="copyright-notice"><a href="https://github.com/mira-x/podlet-web">Podlet</a> is free software and licensed under the terms of the Mozilla Public License 2.0. The <a href="https://github.com/containers/podman.io">Podman icon</a> is licensed under the Apache 2.0 License. This server is running Podlet v0.3.1 (2026-02-02).</p>
+    </footer>
 
     <script>
         document.getElementById("converter").onclick = async () => {
