@@ -1,8 +1,8 @@
-# Podlet
+# Podlet Web (fork)
 
-![Crates.io](https://img.shields.io/crates/v/podlet?style=flat-square)
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/containers/podlet/ci.yaml?event=push&label=ci&logo=github&style=flat-square)
-![Crates.io License](https://img.shields.io/crates/l/podlet?style=flat-square)
+This is a small wrapper around Podlet that re-purposes it as a web-only tool.
+
+## Original README below
 
 Podlet generates [Podman](https://podman.io/) [Quadlet](https://docs.podman.io/en/stable/markdown/podman-systemd.unit.5.html) files from a Podman command, compose file, or existing object.
 
