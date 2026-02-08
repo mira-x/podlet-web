@@ -73,9 +73,8 @@ pub fn convert_compose_to_quadlet(compose_yaml: &str) -> eyre::Result<String> {
     Ok(out)
 }
 
-#[post("/convert", data = "<input>")]
+#[post("/convert", data = "<input>", )]
 fn convert(input: String) -> String {
-    println!("Received /convert request for {input}");
     let quads = convert_compose_to_quadlet(input.as_str());
     match quads {
         Err(e) => format!("An error occured: {e}"),
