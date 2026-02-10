@@ -125,27 +125,31 @@
     </main>
 
     <footer>
-        <p id="copyright-notice"><a href="https://github.com/mira-x/podlet-web">Podlet</a> is free software and licensed under the terms of the Mozilla Public License 2.0. The <a href="https://github.com/containers/podman.io">Podman icon</a> is licensed under the Apache 2.0 License. This server is running Podlet v0.3.1 (2026-02-02).</p>
+        <p id="copyright-notice"><a href="https://github.com/mira-x/podlet-web">Podlet</a> is free software and licensed under the terms of the Mozilla Public License 2.0. The <a href="https://github.com/containers/podman.io">Podman icon</a> is licensed under the Apache 2.0 License. This server is running Podlet v0.3.1 (2026-02-02). Input data will be sent to and processed by the server and then discarded immediately.</p>
     </footer>
 
     <script>
-        document.getElementById("converter").onclick = async () => {
-            var composeYaml = document.getElementById("in").value;
-            
-            var response = await fetch("convert", {
+        document.getElementById("converter").onclick = () => {
+            fetch("convert", {
                 method: "POST",
-                body: composeYaml
+                body: document.getElementById("in").value
+            })
+            .then(res => {
+                if (!res.ok) {
+                    console.log("Received erroneous response:");
+                    console.log(response);
+                    throw new Error("Received erroneous response.");
+                }
+                return res.text();
+            })
+            .then(txt => {
+                document.getElementById("out").value = txt;
+            })
+            .catch(err => {
+                console.log("Error while loading response:");
+                console.log(err);
+                document.getElementById("out").value = "An error occured:\n" + err;
             });
-
-            if(!response.ok) {
-                console.log("Error:")
-                console.log(response);
-                alert("An error occured.");
-                return;
-            }
-
-            var quadlet = await response.text();
-            document.getElementById("out").value = quadlet;
         };
     </script>
 </body>
