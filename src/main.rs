@@ -62,12 +62,16 @@ pub fn convert_compose_to_quadlet(compose_yaml: &str) -> eyre::Result<String> {
     let join_options = JoinOption::all_set();
     let mut out: String = String::new();
     for file in files {
-        out += "# ";
-        out += file.name();
-        out += ".";
-        out += file.extension();
-        out += "\n";
+        let n = file.name();
+        let e = file.extension();
+        out += format!("# {n}.{e}\n").as_str();
+        //out += "# Rootless: ~/.config/containers/systemd/\n";
+        //out += "# Rootful : /etc/containers/systemd/\n";
         out += file.serialize(&join_options)?.as_str();
+        out += r#"
+[Install]
+WantedBy=multi-user.target default.target
+"#;
     }
 
     Ok(out)
